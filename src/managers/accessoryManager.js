@@ -2,11 +2,9 @@ const Accessory = require("../models/Accessory");
 
 exports.getAll = () => Accessory.find();
 
-
-
-exports.create =  function (accessoryData) {
-    const accessory = new Accessory(accessoryData);
-    return accessory.save();
-
-  };
+exports.create = (accessoryData) => Accessory.create(accessoryData);
+ 
   
+
+exports.getOthers = (accessoryIds) => Accessory.find({ _id: { $nin: accessoryIds } });
+

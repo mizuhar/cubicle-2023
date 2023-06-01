@@ -17,7 +17,8 @@ exports.getAll = async (search, from, to) => {
   }
   return result;
 };
-exports.getOne = (cubeId) => Cube.findById(cubeId).lean();
+exports.getOne = (cubeId) => Cube.findById(cubeId);
+exports.getOneByAccessories = (cubeId) => this.getOne(cubeId).populate('accessories');
 
 exports.create =  function (cubeData) {
   const cube = new Cube(cubeData);
@@ -26,5 +27,5 @@ exports.create =  function (cubeData) {
   
 };
 exports.attachAccessory = async (cubeId,accessoryId) => {
-   return  Cube.findByIdAndUpdate(cubeId,{$push: {accessories: accessoryId}})
+  return  Cube.findByIdAndUpdate(cubeId,{$push: {accessories: accessoryId}})
 }
