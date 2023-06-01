@@ -1,13 +1,12 @@
 const Accessory = require("../models/Accessory");
 
+exports.getAll = () => Accessory.find();
 
 
 
-
-exports.create = async function (accessoryData) {
+exports.create =  function (accessoryData) {
     const accessory = new Accessory(accessoryData);
-    await accessory.save();
-  
-    return accessory;
+    return accessory.save();
+
   };
   
