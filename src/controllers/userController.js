@@ -8,8 +8,8 @@ router.get('/register',(req,res)=>{
 router.post('/register',async (req,res)=>{
     const{username,password,repeatPassword} = req.body;
     await userManager.register({username,password,repeatPassword});
-    console.log(req.body); 
-    res.redirect('users/login')
+    
+    res.redirect('/users/login')
 
 });
 router.get('/login',(req,res)=>{
