@@ -3,19 +3,13 @@ const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema({
   username: String,
-  password: {
-     type: String,
-//     validate: {
-//       validator: function (value) {
-//         return this.repeatPassword === value;
-//       },
-//       message: "Password mismatch!",
-//     },
-  },
+  password:  String,
+
+  
 });
 userSchema.virtual('repeatPassword')
   .set(function (value) {
-    if(value != this.password) {
+    if(value !== this.password) {
         throw new mongoose.MongooseError('Password mismatch')
     }
 })  

@@ -66,6 +66,7 @@
     "is-number": "^7.0.0",
     "isexe": "^2.0.0",
     "jackspeak": "^2.2.1",
+    "jsonwebtoken": "^9.0.0",
     "lru-cache": "^9.1.1",
     "media-typer": "^0.3.0",
     "merge-descriptors": "^1.0.1",
