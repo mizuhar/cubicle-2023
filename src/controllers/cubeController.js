@@ -1,11 +1,12 @@
 const router = require("express").Router();
+const {isAuth} = require("../middlewares/authMiddlewares");
 const cubeManager = require("../managers/cubeManager");
 const accessoryManager = require("../managers/accessoryManager");
 const { getDifficultyOptionsViewData } = require("../utils/viewHelpers");
 
 
-router.get("/create", (req, res) => {
-  console.log(req.user);
+router.get("/create",isAuth, (req, res) => {
+  
   res.render("cube/create");
 });
 router.post("/create", async (req, res) => {
@@ -28,7 +29,7 @@ router.get("/:cubeId/details", async (req, res) => {
   if (!cube) {
     return res.redirect("/404");
   }
-  const isOwner = cube.owner?.toString() === req.user._id;
+  const isOwner = cube.owner?.toString() === req.user?._id;
   
   res.render("cube/details", { cube, isOwner });
 });

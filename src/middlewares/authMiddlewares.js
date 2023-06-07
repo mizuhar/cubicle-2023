@@ -8,6 +8,8 @@ exports.auth = async (req, res, next) => {
     try {
       const deccodedToken = await jwt.verify(token, secret);
       req.user = deccodedToken;
+      res.locals.user = deccodedToken
+      res.locals.isAuthenticated = true;
        next();
     } catch (err) {
       res.clearCookie("auth");
@@ -16,6 +18,11 @@ exports.auth = async (req, res, next) => {
   } else {
     next();
   }
-
- 
 };
+
+exports.isAuth = (req, res,next) => {
+  if(!req.user){
+    res.redirect("/users/login");
+  }
+  next();
+}
