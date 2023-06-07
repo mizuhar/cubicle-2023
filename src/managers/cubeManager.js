@@ -23,9 +23,12 @@ exports.getOneByAccessories = (cubeId) => this.getOne(cubeId).populate('accessor
 exports.create =  function (cubeData) {
   const cube = new Cube(cubeData);
   return cube.save();
-
-  
 };
+exports.delete = (cubeId) => Cube.findByIdAndDelete(cubeId)
+exports.update =  (cubeId,cubeData) => Cube.findByIdAndUpdate(cubeId,cubeData)
+ 
+
+
 exports.attachAccessory = async (cubeId,accessoryId) => {
   return  Cube.findByIdAndUpdate(cubeId,{$push: {accessories: accessoryId}})
 }
