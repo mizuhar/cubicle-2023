@@ -32,3 +32,4 @@ exports.update =  (cubeId,cubeData) => Cube.findByIdAndUpdate(cubeId,cubeData)
 exports.attachAccessory = async (cubeId,accessoryId) => {
   return  Cube.findByIdAndUpdate(cubeId,{$push: {accessories: accessoryId}})
 }
+//exports.isOwner = async (cubeId
