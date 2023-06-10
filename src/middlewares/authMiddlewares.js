@@ -13,7 +13,7 @@ exports.auth = async (req, res, next) => {
        next();
     } catch (err) {
       res.clearCookie("auth");
-       res.redirect("/users/login");
+      res.redirect("/users/login");
     }
   } else {
     next();

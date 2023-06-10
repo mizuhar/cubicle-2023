@@ -28,6 +28,11 @@
         
       </ul>
     </header>
+    {{#if errorMessages}}
+    <div id = "notifications">
+    <p id="notification-masage">{{errorMessages}}</p>
+    </div>
+    {{/if}}
     {{{body}}}
 
    </div>

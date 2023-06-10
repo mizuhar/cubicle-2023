@@ -56,13 +56,17 @@ router.post("/:cubeId/delete", async (req, res) => {
 });
 
 
-router.get("/:cubeId/edit", async (req, res) => {
+router.get(`/:cubeId/edit`, async (req, res) => {
+  
   const cube = await cubeManager.getOne(req.params.cubeId).lean();
+  const cubeId = req.params.cubeId;
+  
   const options = getDifficultyOptionsViewData(cube.difficultyLevel);
   res.render("cube/edit", { cube, options });
 });
 
 router.post("/:cubeId/edit", async (req, res) => {
+  
   const cubeData = req.body;
   await cubeManager.update(req.params.cubeId, cubeData);
 
