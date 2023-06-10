@@ -28,11 +28,11 @@
         
       </ul>
     </header>
-    {{#if errorMessages}}
+    {{#each errorMessages}}
     <div id = "notifications">
-    <p id="notification-masage">{{errorMessages}}</p>
+    <p id="notification-masage">{{this}}</p>
     </div>
-    {{/if}}
+    {{/each}}
     {{{body}}}
 
    </div>

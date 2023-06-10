@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     type:String,
     required: [true,'Username is required!'],
     minLength:[5,'Password is too short!'],
-    match: [/^[A-Za-z0-9]$/,'User name is alfabetically!'],
+    match: [/^[A-Za-z0-9]+$/,'User name is alfabetically!'],
     unique: true
   },
   password: {
@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     required: [true,'Password is required'],
     validate: {
       validator: function(value) {
-        return /^[A-Za-z0-9]$/.test(value);
+        return /^[A-Za-z0-9]+$/.test(value);
     },
     message: 'Invalid password characteres!'
   },
